@@ -135,11 +135,63 @@
       font-size: 1.2rem;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       margin-top: 2rem;
+      cursor: pointer;
+      border: none;
+      position: relative;
     }
 
     .cta-button:hover {
       transform: translateY(-2px);
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .calendar-popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      display: none;
+    }
+    .calendar-popup.active {
+      display: flex;
+    }
+    .calendar-popup-content {
+      background: #fff;
+      border-radius: 16px;
+      max-width: 95vw;
+      width: 500px;
+      padding: 2rem 1rem 1rem 1rem;
+      position: relative;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+      animation: popupIn 0.2s;
+    }
+    @keyframes popupIn {
+      from { transform: scale(0.95); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .calendar-popup-content iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+      border-radius: 8px;
+      background: #fff;
+    }
+    .calendar-popup-close {
+      position: absolute;
+      top: 10px;
+      right: 18px;
+      font-size: 1.5rem;
+      color: #333;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 10;
     }
 
     .video-container {
@@ -242,7 +294,13 @@
           <div class="countdown-title">Offer Ends In:</div>
           <div class="countdown-timer" id="countdown">30 Days</div>
         </div>
-        <a href="#" class="cta-button" id="claimOffer">Claim Offer</a>
+        <button class="cta-button" id="claimOffer">Claim Offer</button>
+        <div class="calendar-popup" id="calendarPopup">
+          <div class="calendar-popup-content">
+            <button class="calendar-popup-close" id="calendarPopupClose">&times;</button>
+            <iframe src="https://calendar.google.com/calendar/appointments/AcZssZ1E1klW541Shz0f9p948WHuIFLwVo2gp2xyx0I=?gv=true" allowfullscreen></iframe>
+          </div>
+        </div>
       </div>
       <div class="video-container">
         <iframe width="560" height="315" src="https://www.youtube.com/embed/_VR-bzqTyJc?si=ULUE_Sw40PF5TOh8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -254,38 +312,38 @@
     <p>&copy; 2024 Simply Data. All rights reserved.</p>
   </footer>
 
-  <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const claimButton = document.getElementById('claimOffer');
+      const calendarPopup = document.getElementById('calendarPopup');
+      const calendarPopupClose = document.getElementById('calendarPopupClose');
       
       claimButton.addEventListener('click', function(e) {
         e.preventDefault();
-        calendar.schedulingButton.load({
-          url: 'https://calendar.google.com/calendar/appointments/AcZssZ1E1klW541Shz0f9p948WHuIFLwVo2gp2xyx0I=?gv=true',
-          color: '#039BE5',
-          label: 'Book an appointment',
-          target: claimButton,
-        });
+        calendarPopup.classList.add('active');
       });
-
+      calendarPopupClose.addEventListener('click', function() {
+        calendarPopup.classList.remove('active');
+      });
+      // Close popup when clicking outside the content
+      calendarPopup.addEventListener('click', function(e) {
+        if (e.target === calendarPopup) {
+          calendarPopup.classList.remove('active');
+        }
+      });
       // Countdown Timer
       const endDate = new Date();
       endDate.setDate(endDate.getDate() + 30);
-      
       function updateCountdown() {
         const now = new Date();
         const difference = endDate - now;
-        
         const days = Math.floor(difference / (1000 * 60 * 60 * 24));
         const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-        
         document.getElementById('countdown').innerHTML = 
           `${days}d ${hours}h ${minutes}m ${seconds}s`;
       }
-      
       updateCountdown();
       setInterval(updateCountdown, 1000);
     });
