@@ -348,6 +348,66 @@
       border: none;
     }
 
+    .videos-grid {
+      display: flex;
+      overflow-x: auto;
+      gap: 2rem;
+      width: 100%;
+      padding: 1rem 0;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .videos-grid::-webkit-scrollbar {
+      display: none;
+    }
+    .video-card {
+      flex: 0 0 auto;
+      min-width: 340px;
+      max-width: 370px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 0.5rem 0.5rem 1rem 0.5rem;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      scroll-snap-align: start;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .video-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #ffd700;
+      margin-bottom: 0.5rem;
+      text-align: center;
+      width: 100%;
+    }
+    .tiktok-embed {
+      width: 100% !important;
+      min-width: 100% !important;
+      max-width: 340px !important;
+      margin: 0 auto !important;
+      aspect-ratio: 9/16;
+      display: block;
+    }
+    @media (max-width: 1024px) {
+      .video-card {
+        min-width: 320px;
+        max-width: 340px;
+      }
+    }
+    @media (max-width: 768px) {
+      .video-card {
+        min-width: 98vw;
+        max-width: 98vw;
+      }
+    }
+
     .countdown {
       background: rgba(255, 255, 255, 0.1);
       padding: 2rem;
@@ -368,36 +428,6 @@
       font-size: 2rem;
       font-weight: 700;
       color: #ffffff;
-    }
-
-    @media (max-width: 1024px) {
-      .offer-container {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-
-      .offer-content {
-        max-width: 100%;
-      }
-
-      .video-container {
-        max-width: 800px;
-        margin: 0 auto;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .offer-title {
-        font-size: 2.5rem;
-      }
-
-      .offer-subtitle {
-        font-size: 1.3rem;
-      }
-
-      nav {
-        display: none;
-      }
     }
   </style>
 </head>
@@ -422,13 +452,11 @@
   <section class="offer-section">
     <div class="offer-container">
       <div class="offer-content">
-        <div class="offer-eyebrow">Limited Time Spring Offer</div>
-        <h1 class="offer-title">Buy One Get One Free!</h1>
-        <h2 class="offer-subtitle">Double Your Data Solutions Today</h2>
+        <div class="offer-eyebrow">Limited Time Offer</div>
+        <h1 class="offer-title">Simply Data Everything Bundle</h1>
+        <h2 class="offer-subtitle">The Perfect Toolbox of Automated Tools</h2>
         <p class="offer-description">
-          For the next 30 days, we're giving every customer who signs up for our automated data entry solution 
-          access to our automated data analyst report writer solution as well for free with zero consumption 
-          and API costs for the first year.
+          For a limited time we are offering every simply data customer the full toolbox of automation extensions for the price of one.  Buy one, get all.  The everything bundle is the automated ai toolbox for businesses everywhere
         </p>
         <div class="countdown">
           <div class="countdown-title">Offer Ends In:</div>
@@ -484,9 +512,33 @@
           </div>
         </div>
       </div>
-      <div class="video-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/_VR-bzqTyJc?si=ULUE_Sw40PF5TOh8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="videos-grid">
+        <div class="video-card">
+          <div class="video-title">Automated Data Analyst</div>
+          <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@automationsimplydata/video/7507470029156257029" data-video-id="7507470029156257029" style="max-width: 605px;min-width: 325px;">
+            <section>
+              <a target="_blank" title="@automationsimplydata" href="https://www.tiktok.com/@automationsimplydata?refer=embed">@automationsimplydata</a> Corporate real estate? Compare multiple property listings and simply data will instantly scrape the data and create a professional analysis I think so but like he was obviously CGI he was CGI when he was like glowing you know #<a title="realestate" target="_blank" href="https://www.tiktok.com/tag/realestate?refer=embed">#realestate</a>#<a title="corporate" target="_blank" href="https://www.tiktok.com/tag/corporate?refer=embed">#corporate</a>#<a title="realestateinvesting" target="_blank" href="https://www.tiktok.com/tag/realestateinvesting?refer=embed">#realestateinvesting</a> <a target="_blank" title="♬ original sound - Simply Data" href="https://www.tiktok.com/music/original-sound-7507470032085437189?refer=embed">♬ original sound - Simply Data</a>
+            </section>
+          </blockquote>
+        </div>
+        <div class="video-card">
+          <div class="video-title">Automated Data Entry</div>
+          <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@automationsimplydata/video/7507509543862062341" data-video-id="7507509543862062341" style="max-width: 605px;min-width: 325px;">
+            <section>
+              <a target="_blank" title="@automationsimplydata" href="https://www.tiktok.com/@automationsimplydata?refer=embed">@automationsimplydata</a> Don't enter data manually into spreadsheets into 2025 use simply data to upload bulk amounts of pdfs and have it generate it for you automatically <a title="smallbusiness" target="_blank" href="https://www.tiktok.com/tag/smallbusiness?refer=embed">#smallbusiness</a> <a title="organization" target="_blank" href="https://www.tiktok.com/tag/organization?refer=embed">#organization</a>  <a title="dataentry" target="_blank" href="https://www.tiktok.com/tag/dataentry?refer=embed">#dataentry</a> <a target="_blank" title="♬ original sound - Simply Data" href="https://www.tiktok.com/music/original-sound-7507509528403266310?refer=embed">♬ original sound - Simply Data</a>
+            </section>
+          </blockquote>
+        </div>
+        <div class="video-card">
+          <div class="video-title">Data Chat - Spreadsheet Analysis</div>
+          <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@automationsimplydata/video/7507402543484423429" data-video-id="7507402543484423429" style="max-width: 605px;min-width: 325px;">
+            <section>
+              <a target="_blank" title="@automationsimplydata" href="https://www.tiktok.com/@automationsimplydata?refer=embed">@automationsimplydata</a> Save money and increase earnings with better analysis of your spending and income spreadsheets. Data chat is a full time employee in a box ready to give a professional data analysis in seconds! <a title="finance" target="_blank" href="https://www.tiktok.com/tag/finance?refer=embed">#finance</a> <a title="buissness" target="_blank" href="https://www.tiktok.com/tag/buissness?refer=embed">#buissness</a> <a title="buisnessowner" target="_blank" href="https://www.tiktok.com/tag/buisnessowner?refer=embed">#buisnessowner</a> <a title="smallbusiness" target="_blank" href="https://www.tiktok.com/tag/smallbusiness?refer=embed">#smallbusiness</a> <a title="smallbusinessowner" target="_blank" href="https://www.tiktok.com/tag/smallbusinessowner?refer=embed">#smallbusinessowner</a> <a target="_blank" title="♬ original sound - Simply Data" href="https://www.tiktok.com/music/original-sound-7507402545225763590?refer=embed">♬ original sound - Simply Data</a>
+            </section>
+          </blockquote>
+        </div>
       </div>
+      <script async src="https://www.tiktok.com/embed.js"></script>
     </div>
   </section>
 
