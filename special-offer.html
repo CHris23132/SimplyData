@@ -729,6 +729,128 @@
         padding-right: 2.5rem;
       }
     }
+
+    /* Hero Video Section Styles */
+    .hero-video-section {
+      padding: 4rem 0;
+      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-video-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 90%;
+      text-align: center;
+    }
+
+    .hero-video-title {
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 2rem;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero-video-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-video-wrapper iframe {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border: none;
+    }
+
+    @media (max-width: 768px) {
+      .hero-video-section {
+        padding: 2rem 0;
+      }
+
+      .hero-video-title {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero-video-wrapper {
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-video-title {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+    }
+
+    .hero-cta {
+      margin-top: 2.5rem;
+      text-align: center;
+    }
+
+    .hero-cta-subtitle {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero-cta-button {
+      background: #ffd700;
+      color: #000000;
+      padding: 1.2rem 3rem;
+      font-size: 1.4rem;
+      font-weight: 700;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero-cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      .hero-cta {
+        margin-top: 2rem;
+      }
+
+      .hero-cta-subtitle {
+        font-size: 1.5rem;
+        margin-bottom: 1.2rem;
+      }
+
+      .hero-cta-button {
+        padding: 1rem 2.5rem;
+        font-size: 1.2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-cta-subtitle {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+      }
+
+      .hero-cta-button {
+        padding: 0.9rem 2rem;
+        font-size: 1.1rem;
+        width: 100%;
+        max-width: 300px;
+      }
+    }
   </style>
   <script>
   !function (w, d, t) {
@@ -774,6 +896,20 @@
     <!-- Overlay -->
     <div class="overlay"></div>
   </header>
+
+  <!-- New Hero Video Section -->
+  <section class="hero-video-section">
+    <div class="hero-video-container">
+      <h1 class="hero-video-title">What is Simply Data</h1>
+      <div class="hero-video-wrapper">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/jpdTIwTDAVM?si=2fLHjAn32ryHRS8z" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="hero-cta">
+        <h2 class="hero-cta-subtitle">Try Simply Data Now - First Month Free</h2>
+        <button class="cta-button hero-cta-button" id="heroClaimOffer">Try Now</button>
+      </div>
+    </div>
+  </section>
 
   <section class="offer-section">
     <div class="offer-container">
@@ -896,6 +1032,7 @@
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const claimButton = document.getElementById('claimOffer');
+      const heroClaimButton = document.getElementById('heroClaimOffer');
       const calendarPopup = document.getElementById('calendarPopup');
       const calendarPopupClose = document.getElementById('calendarPopupClose');
       
@@ -903,6 +1040,12 @@
         e.preventDefault();
         calendarPopup.classList.add('active');
       });
+
+      heroClaimButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        calendarPopup.classList.add('active');
+      });
+
       calendarPopupClose.addEventListener('click', function() {
         calendarPopup.classList.remove('active');
       });
